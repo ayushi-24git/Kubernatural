@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: secbusybox
+  name: secbusybox1
+  
+spec:
+  securityContext:
+    runAsUser: 1000
+    
+  containers:
+    - args:
+      - "/bin/sh"
+      - -c
+      - sleep 3600; 
+      name: secbusybox
+      image: busybox
+      securityContext:
+        runAsUser: 2000      
